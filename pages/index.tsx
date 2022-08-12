@@ -1,5 +1,8 @@
 import useSWR from "swr";
 
+import { TimesColumn } from "./TimesColumn";
+import { TimesSeparatorLines } from "./TimesSeparatorLines";
+
 const fetcher = (query: string) =>
   fetch("/api/graphql", {
     method: "POST",
@@ -12,6 +15,7 @@ const fetcher = (query: string) =>
     .then((json) => json.data);
 
 export default function Index() {
+  const eventBlockHeight = 50;
   const { data, error } = useSWR(
     "{ events { id, title, start, end } }",
     fetcher
@@ -22,32 +26,29 @@ export default function Index() {
 
   const { events } = data;
 
-  console.log({events})
-
   return (
     <div className="container">
-      <div className="separator-lines">
-        <div className="separator-line"></div>
-        <div className="separator-line"></div>
-        <div className="separator-line"></div>
-        <div className="separator-line"></div>
-        <div className="separator-line"></div>
-        <div className="separator-line"></div>
-      </div>
-
-      <div className="time-col">
-        <div className="time-label">00:00</div>
-        <div className="time-label">01:00</div>
-        <div className="time-label">02:00</div>
-        <div className="time-label">03:00</div>
-        <div className="time-label">04:00</div>
-        <div className="time-label">05:00</div>
-      </div>
+      <TimesSeparatorLines />
+      <TimesColumn />
 
       <div className="events">
-        <div className="event" style={{
-          top: `${50*1}px`,
-        }}>Event 1</div>
+        {events.map(({ start, end, title }) => {
+          const startHour = start / 60;
+          const eventLengthMins = (end - start);
+          const heightPx = (eventLengthMins / 60) * eventBlockHeight;
+
+          return (
+            <div
+              className="event"
+              title={title}
+              style={{
+                height:`calc(${heightPx}px - 2px)`,
+                top: `${eventBlockHeight * startHour}px`,
+            }}>
+              {title}
+            </div>
+          )
+        })}
       </div>
     </div>
   );
