@@ -1,9 +1,9 @@
 import useSWR from "swr";
 import { IEvent } from "../types";
-import Events from "./Events";
+import Events from "../components/Events";
 
-import { TimesColumn } from "./TimesColumn";
-import { TimesSeparatorLines } from "./TimesSeparatorLines";
+import { TimesColumn } from "../components/TimesColumn";
+import { TimesSeparatorLines } from "../components/TimesSeparatorLines";
 
 const fetcher = (query: string) =>
   fetch("/api/graphql", {
