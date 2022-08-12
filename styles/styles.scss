@@ -50,6 +50,7 @@ body {
 }
 
 .event {
+	pointer-events: none;
 	background: $light-blue;
 	border-left: 3px solid $primary;
 	border-radius: 4px;
