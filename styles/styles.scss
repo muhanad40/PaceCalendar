@@ -1,0 +1,63 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+	font-family: Verdana, Arial, Tahoma, Serif;
+	font-size: 16px;
+}
+
+.container {
+	position: relative;
+	margin-top: .625rem;
+	display: flex;
+}
+
+.time-col {
+	position: relative;
+}
+
+.time-label {
+	height: $block-size;
+	font-size: .75rem;
+	position: relative;
+	top: -.43rem;
+	color: $dark-grey;
+}
+
+.separator-lines {
+	position: absolute;
+	width: 100%;
+
+	.separator-line {
+		height: $block-size;
+	}
+
+	.separator-line:after {
+		content: '';
+		width: 100%;
+		height: 1px;
+		background: $light-grey;
+		display: block;
+		margin-left: 2.7rem;
+	}
+}
+
+.events {
+	margin-left: .45rem;
+	z-index: 1;
+	flex: 1;
+}
+
+.event {
+	background: $light-blue;
+	border-left: 3px solid $primary;
+	border-radius: 4px;
+	font-size: .75rem;
+	padding: .3125rem;
+	height: calc($block-size - 2px);
+	width: 6.25rem; // 100px
+	color: $dark-blue;
+	margin-right: 3px;
+	position: absolute;
+}

@@ -22,17 +22,33 @@ export default function Index() {
 
   const { events } = data;
 
+  console.log({events})
+
   return (
-    <div>
-      {events.map((event) => (
-        <>
-          <div>{event.title}</div>
-          <div>
-            {event.start} - {event.end}
-          </div>
-          <hr />
-        </>
-      ))}
+    <div className="container">
+      <div className="separator-lines">
+        <div className="separator-line"></div>
+        <div className="separator-line"></div>
+        <div className="separator-line"></div>
+        <div className="separator-line"></div>
+        <div className="separator-line"></div>
+        <div className="separator-line"></div>
+      </div>
+
+      <div className="time-col">
+        <div className="time-label">00:00</div>
+        <div className="time-label">01:00</div>
+        <div className="time-label">02:00</div>
+        <div className="time-label">03:00</div>
+        <div className="time-label">04:00</div>
+        <div className="time-label">05:00</div>
+      </div>
+
+      <div className="events">
+        <div className="event" style={{
+          top: `${50*1}px`,
+        }}>Event 1</div>
+      </div>
     </div>
   );
 }
