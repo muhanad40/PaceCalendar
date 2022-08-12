@@ -1,4 +1,6 @@
 import useSWR from "swr";
+import { IEvent } from "../types";
+import Events from "./Events";
 
 import { TimesColumn } from "./TimesColumn";
 import { TimesSeparatorLines } from "./TimesSeparatorLines";
@@ -15,8 +17,7 @@ const fetcher = (query: string) =>
     .then((json) => json.data);
 
 export default function Index() {
-  const eventBlockHeight = 50;
-  const { data, error } = useSWR(
+  const { data, error } = useSWR<{events: IEvent[]}>(
     "{ events { id, title, start, end } }",
     fetcher
   );
@@ -31,25 +32,7 @@ export default function Index() {
       <TimesSeparatorLines />
       <TimesColumn />
 
-      <div className="events">
-        {events.map(({ start, end, title }) => {
-          const startHour = start / 60;
-          const eventLengthMins = (end - start);
-          const heightPx = (eventLengthMins / 60) * eventBlockHeight;
-
-          return (
-            <div
-              className="event"
-              title={title}
-              style={{
-                height:`calc(${heightPx}px - 2px)`,
-                top: `${eventBlockHeight * startHour}px`,
-            }}>
-              {title}
-            </div>
-          )
-        })}
-      </div>
+      <Events events={events} />
     </div>
   );
 }
