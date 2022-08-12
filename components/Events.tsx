@@ -18,6 +18,7 @@ export default function Events({ events }: IProps) {
 					<div
 						className="event"
 						title={title}
+						key={title}
 						style={{
 							height:`calc(${heightPx}px - 2px)`,
 							top: `${eventBlockHeight * startHour}px`,
