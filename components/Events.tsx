@@ -32,6 +32,7 @@ export default function Events({ events }: IProps) {
 			{events.map((event) => (
 				<Event
 					event={event}
+					key={event.id}
 					ref={(el: HTMLElement) => addedEventsToScreen.current.push({ ...event, element: el })}
 				/>
 			))}
