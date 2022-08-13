@@ -15,6 +15,10 @@ I used SCSS because it's easier to organise my styles
 
 I used Jest to unit tests most of the logic
 
+The unit test files are by the files they're testing with the format <same-file-name.test.ts(x)>. This makes it easy to find those files instead of burying them inside a `tests` folder that mirrors the same folder structure.
+
+I kept the `fetcher()` function inside the `index.tsx` file as I feel it's overkil to move it to a separate file because it's only being used there. If this was a bigger application, I'd move it.
+
 #### What challenges did you face?
 The logic that handles the positioning of event blocks so they don't overlap was the most challening. What's funny is I didn't realise this was a tricky part. I thought "A calendar? Sure I'll do this no problems." While I was styling the CSS and thinking about how the CSS is going to affect the positioning, it hit me!
 
@@ -28,9 +32,10 @@ I did not unit test the logic that calculates the left position of an event bloc
 #### What do you like and not like about your solution?
 I really like how the event blocks position themselves accordingly so they don't overlap. I haven't tested this app with many events to see where it breaks.
 
-The app doesn't have a lot of code for me to not like.
+The app doesn't have a lot of code for me to be critical :/
 
 #### What areas would you work on next?
+- Add unit tests for <Index /> component and mock the `fetcher()` function to make sure this component actually does the fetch and renders the events
 - Sort overlapping events so they are ordered by height (a nice to have maybe)
 - Place a nice loading spinner
 - Try to show a week calendar instead of one day
