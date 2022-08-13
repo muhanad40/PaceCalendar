@@ -1,54 +1,40 @@
-# Pace gets organised 📅
+#### What choices did you make and why?
+  - I've separated components and types into separate files so the code is cleaner and easier to deal. Plus, it's easy to unit test.
+  - I started with styling the UI first to get everything ready
+	- I wrote most of the logic before writing any tests for two reasons:
+		- I'm used to this pattern (maybe because I'm impatient?)
+		- I use the browser to verify my assumptions and make sure the logic works as expected. This is especially true for when I was trying to get the event blocks to position correctly without overlapping.
+	- I used SCSS because it's easier to organise my styles
+	- I used Jest to unit tests most of the logic
 
-Thank you for taking the time to interview with Pace! We have a coding exercise we would like you to do to show us your skills, and give us something to talk about in our technical interview.
+#### What challenges did you face?
+The logic that handles the positioning of event blocks so they don't overlap was the most challening. What's funny is I didn't realise this was a tricky part. I thought "A calendar? Sure I'll do this no problems." While I was styling the CSS and thinking about how the CSS is going to affect the positioning, it hit me!
 
-## Expectations
+I got the old pen and paper and started drawing a calendar to make sense of the logic. I was trying to figure out how I can write logic that tells me something overlaps another. Drawing helped because I don't need to imagine a calendar while thinking, I just use the visuals to think about the logic.
 
-The exercise was designed to be solvable in an afternoon, yet a robust and comprehensive solution could take much longer. Rather than building a complete solution, please constrain yourself to around **three hours**, and use a shortup writeup to mention anything not achieved or any known limitations.
+#### What tradeoffs did you choose?
+I did not unit test the logic that calculates the left position of an event block because it was not possible to do. It's a bit tricky and since I've spent a lot of time on this, I'm going to skip this. If I was to spend time on such a tricky task, I'd look into a better approach to test this behaviour as it's quite important to the app. I may realise that it's easier to test this via functional tests using Cypress for example.
 
-## Requirements
+#### What do you like and not like about your solution?
+Don't like? It's perfect!
+Jokes aside
 
-![Example](./example.png)
+#### What areas would you work on next?
+- Place a nice loading spinner
+- Try to show a week calendar instead of one day
+- Clicking an event block that shows a small popup with more details
+- Adding/Editing/Deleting events
+- Basically incrementally add features that a calendar would have, otherwise this list would be much longer ;)
 
-We would like to build a simple day view for a calendar, populated with data from a graphql API. The API returns a list of events which have a start and end time in minutes since midnight. So 9am is 540 minutes, 9.30 is 570 minutes and so on.
+#### How to run
+1) Build the app first
+`npm build`
+2) Then run
+`npm start`
 
-When rendering the calendar:
+#### Tests
+To run all tests
+`npm run test`
 
-- Events should be shown without any overlapping
-- If multiple events collide, then they should have equal width
-- Styling can be kept extremely simple
-- We only need to display the events
-
-Your submission should also be reflective of how you would write production quality code, but don't fret if you run out of time - we aren't expecting polished solutions.
-
-## Writeup
-
-Written communication and thoughtful self-reflection is an important part of our work. This is an opportunity for you to tell us a bit more about the work you did. The writeup shouldn’t be long, but we will use it as part of the evaluation and discuss it in subsequent interview, so you should spend a bit of time and focus on it.
-
-Here are some example questions your writeup could address:
-
-- What choices did you make and why?
-- What challenges did you face?
-- What tradeoffs did you choose?
-- What do you like and not like about your solution?
-- What areas would you work on next?
-
-We love feedback. If there’s anything you think could be improved with this exercise, please share your thoughts in the writeup, too.
-
-## Technologies
-
-We've gotten you started using a [next.js](https://nextjs.org/) boilerplate including sample data. If you're not familar with the framework then no problem, we don't use any of its additional features here or require server-side rendering. To complete the requirements:
-
-- You may use any open source, publicly available third party libraries or components you would like **except calendar components like [fullcalendar](https://fullcalendar.io/)**.
-- You may use any testing framework or approach you prefer, or not write tests at all.
-
-## Deliverables
-
-We expect you to deliver:
-
-1. Source code of a web app that fulfils, as far as possible, the above requirements and uses the specified technologies, delivered in form of a Git repository. The Repository can be public or private, on GitHub, GitLab or BitBucket, CodeSandboxed, or zipped and emailed to us.
-2. A short writeup of your work in form of a Markdown readme in the project.
-
-Good Luck and have fun!
-
-Once completed, please email your solution to ben@pacerevenue.com. If you have any questions, please let us know!
+To run tests in watch mode
+`npm run test:watch`
