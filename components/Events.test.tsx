@@ -1,68 +1,33 @@
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
+
 import Events from './Events';
 
-const mockEvents = [
-	{
-		id: 1,
-		title: "Walk",
-		start: 60,
-		end: 120,
-	},
-	{
-		id: 2,
-		title: "Call Mike",
-		start: 90,
-		end: 120,
-	},
-	{
-		id: 3,
-		title: "Meeting 1",
-		start: 180,
-		end: 300,
-	},
-	{
-		id: 4,
-		title: "Meeting 2",
-		start: 240,
-		end: 360,
-	},
-	{
-		id: 5,
-		title: "Event Bla",
-		start: 360,
-		end: 480,
-	},
-	{
-		id: 6,
-		title: "Exercise",
-		start: 360,
-		end: 420,
-	},
-];
+describe('<Events />', () => {
+	const mockEvents = [
+		{
+			id: '1',
+			title: 'Event 1',
+			start: 60,
+			end: 120,
+		},
+		{
+			id: '2',
+			title: 'Event 2',
+			start: 90,
+			end: 120,
+		},
+	]
 
-function findOverlappingEvents({ id, start, end}) {
-	const results = [];
+	beforeEach(cleanup);
 
-	mockEvents.forEach((event) => {
-		if (id === event.id) return;
+	it('should render all events', () => {
+		const { getByText } = render(<Events events={mockEvents} />);
 
-		if (end > event.start && start < event.end) {
-			results.push(event)
-		}
+		mockEvents.forEach(({ title }) => {
+			expect(() => getByText(title)).not.toThrow();
+		});
 	});
 
-	return results;
-}
-
-describe('Events', () => {
-	it('Finds all other overlapping events', () => {
-		const results = findOverlappingEvents({
-			id: 6,
-			title: "Exercise",
-			start: 360,
-			end: 420,
-		})
-
-		console.log(results)
-	});
+	// I tried implementing this test, but I couldn't get the desired behaviour because this is not being rendered on a browser page for the `left` CSS to be set correctly. If I was to spend more time on this, I'd look into how I can lock this logic in a unit test
+	// xit('should render events with correct `left` CSS style so they do not overlap');
 });

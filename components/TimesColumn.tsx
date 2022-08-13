@@ -1,4 +1,4 @@
-export function TimesColumn() {
+export default function TimesColumn() {
 	return (
 		<div className="time-col">
 			{[...Array(24)].map((_, index) => {

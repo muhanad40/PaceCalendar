@@ -1,4 +1,4 @@
-export function TimesSeparatorLines() {
+export default function TimesSeparatorLines() {
 	return (
 		<div className="separator-lines">
 			{[...Array(24)].map((_, index) => {
