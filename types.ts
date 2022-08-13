@@ -4,3 +4,7 @@ export interface IEvent {
 	start: number;
 	end: number;
 }
+
+export type IAddedEvent = IEvent & {
+	element: HTMLElement;
+}
