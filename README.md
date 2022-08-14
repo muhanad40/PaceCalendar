@@ -32,7 +32,7 @@ I did not unit test the logic that calculates the left position of an event bloc
 #### What do you like and not like about your solution?
 I really like how the event blocks position themselves accordingly so they don't overlap. I haven't tested this app with many events to see where it breaks.
 
-The app doesn't have a lot of code for me to be critical :/
+The app doesn't have a lot of code for me to be critical, but I'm waiting for your feedback :)
 
 #### What areas would you work on next?
 - Add unit tests for <Index /> component and mock the `fetcher()` function to make sure this component actually does the fetch and renders the events
