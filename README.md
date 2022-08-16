@@ -1,3 +1,8 @@
+#### What is this repo about?
+This is a technical test submission for a job I applied to. The task was to build a simple one day calendar that renders events fetched from a GraphQL server.
+
+<img src="screenshot.png" width="200" />
+
 #### What choices did you make and why?
 The logic that positions the event blocks to avoid overlapping hides all events on the calendar (with `display: none`) on initial render. It shows them one by one as they are positioned correctly. This is because before we show an event block, we find out which events it overlaps with. The logic then figures out the correct position based on the event blocks visible on the calendar already. This is to avoid any flashing where you see an event block have an initial position and then quickly get changed.
 
