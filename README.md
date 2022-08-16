@@ -1,5 +1,5 @@
 #### What is this repo about?
-This is a technical test submission for a job I applied to. The task was to build a simple one day calendar that renders events fetched from a GraphQL server.
+This is a technical test submission for a job I applied to. The task was to build a simple one day calendar that renders events fetched from a GraphQL server. The trickiest part is making sure overlapping events should render next to each other and not actually overlap.
 
 <img src="screenshot.png" width="200" />
 
